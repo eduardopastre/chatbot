@@ -1,1 +1,1 @@
-Company.create name: 'MyBot'
+Company.create name: 'EP ChatBot'
