@@ -1,10 +1,6 @@
 require_relative './../../spec_helper.rb'
 
 describe UserModule::CreateService do
-  before do
-    #@user = create(:user)
-    
-  end
 
   describe '#call' do
     it 'Without username params, receive an error' do
@@ -22,11 +18,8 @@ describe UserModule::CreateService do
 
     it 'With existent username, receive username already exists' do
       @user = create(:user)
-      @user.save
-      puts @user
       create_service = UserModule::CreateService.new({'username-original' => @user.username})
       response = create_service.call()
-      puts response
       expect(response).to match('Username já existe')
     end
   end
