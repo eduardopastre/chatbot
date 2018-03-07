@@ -27,19 +27,28 @@ describe UserFaqModule::ListService do
       expect(response).to match('Nenhum favorito encontrado')
     end
 
-    it "With one favorite, receive list of faqs" do
-      create(:user_faq, user: @user, faq: @faq1)
-      list_service = UserFaqModule::ListService.new({'original-username' => @user.username})
-      response = list_service.call()
-      expect(response.length).to eq(1)
-    end
+    context "With favorites faq" do
+      before(:each) do
+        create(:user_faq, user: @user, faq: @faq1)
+      end
 
-    it "With two or more favorite, receive list of faqs" do
-      create(:user_faq, user: @user, faq: @faq1)
-      create(:user_faq, user: @user, faq: @faq2)
-      list_service = UserFaqModule::ListService.new({'original-username' => @user.username})
-      response = list_service.call()
-      expect(response.length).to eq(2)
+      it "Find question and answer with one favorite" do
+        list_service = UserFaqModule::ListService.new({'original-username' => @user.username})
+        response = list_service.call()
+        expect(response).to match(@faq1.question)
+        expect(response).to match(@faq1.answer)
+      end
+
+      it "Find question and answer with two favorites" do
+        create(:user_faq, user: @user, faq: @faq2)
+        list_service = UserFaqModule::ListService.new({'original-username' => @user.username})
+        response = list_service.call()
+        expect(response).to match(@faq1.question)
+        expect(response).to match(@faq1.answer)
+
+        expect(response).to match(@faq2.question)
+        expect(response).to match(@faq2.answer)
+      end
     end
   end
 end
