@@ -6,11 +6,18 @@ module UserFaqModule
 
     def call
       return 'Usuário não encontrado' if @user.nil?
-
       begin
-        return 'Nenhum favorito encontrado' if @user.faqs.length == 0
-
-        @user.faqs
+        response = "*Perguntas e Respostas* \n\n"
+        @user.faqs.each do |f|
+          response += "*#{f.id}* - "
+          response += "*#{f.question}*\n"
+          response += ">#{f.answer}\n"
+          f.hashtags.each do |h|
+            response += "_##{h.name}_ "
+          end
+          response += "\n\n"
+        end
+        (@user.faqs.count > 0) ? response : 'Nenhum favorito encontrado'
       rescue
         'Falha ao listar favoritos'
       end
