@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217165819) do
+ActiveRecord::Schema.define(version: 20180306162116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20180217165819) do
   create_table "hashtags", force: :cascade do |t|
     t.string "name"
     t.integer "company_id"
+  end
+
+  create_table "user_faqs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "faq_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
