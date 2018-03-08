@@ -13,6 +13,8 @@ class HelpService
     response += ">Lista as perguntas e respostas com aquela hashtag\n\n"
     response += "*Perguntas e Respostas*\n"
     response += ">Mostra a lista de perguntas e respostas\n\n"
+    response += "*Adicione username X*\n"
+    response += ">Adiciona um usuário para guardar seus favoritos\n\n"
     response += "*Favoritos*\n"
     response += ">Lista as Faqs marcadas como favorito\n\n"
     response += "*Favoritar ID*\n"
