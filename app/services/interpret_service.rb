@@ -8,15 +8,15 @@ class InterpretService
     when "remove"
       FaqModule::RemoveService.new(params).call
     when "help"
-      HelpService.call()
+      HelpService.call
     when "create_user"
-      UserModule::CreateService.new(param).call
+      UserModule::CreateService.new(params).call
     when "favorites"
-      UserFaqModule::ListService.new(param).call
+      UserFaqModule::ListService.new(params).call
     when "add_favorite"
       UserFaqModule::CreateService.new(params).call
     when "remove_favorte"
-      UserFaqModule::RemoveService.new(param).call
+      UserFaqModule::RemoveService.new(params).call
     else
       "Não compreendi o seu desejo"
     end
