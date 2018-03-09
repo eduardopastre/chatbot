@@ -1,8 +1,8 @@
 module UserFaqModule
   class RemoveService
     def initialize(params)
-      @user = User.find_by_username(params['original-username'])
-      @faq_id = params['original-faq']
+      @user = User.find_by_username(params['username'])
+      @faq_id = params['faq']
     end
 
     def call

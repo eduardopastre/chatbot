@@ -1,7 +1,7 @@
 module UserFaqModule
   class ListService
     def initialize(params)
-      @user = User.find_by_username(params['original-username'])
+      @user = User.find_by_username(params['username'])
     end
 
     def call

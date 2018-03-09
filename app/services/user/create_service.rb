@@ -1,7 +1,7 @@
 module UserModule
   class CreateService
     def initialize(params)
-      @username = params["username-original"]
+      @username = params["username"]
     end
 
     def call

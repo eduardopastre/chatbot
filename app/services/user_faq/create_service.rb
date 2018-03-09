@@ -1,8 +1,8 @@
 module UserFaqModule
   class CreateService
     def initialize(params)
-      @user = User.find_by_username(params['original-username'])
-      @faq = Faq.find(params['original-faq']) rescue nil
+      @user = User.find_by_username(params['username'])
+      @faq = Faq.find(params['faq']) rescue nil
     end
 
     def call
