@@ -10,7 +10,7 @@ module UserFaqModule
       return 'faq não encontrada' if @faq.nil?
 
       begin
-        if @user.faqs.build({id: @faq.id})
+        if UserFaq.create(user_id: @user.id, faq_id: @faq.id)
           'Adicionado com sucesso'
         else
           'Erro ao favoritar faq'
