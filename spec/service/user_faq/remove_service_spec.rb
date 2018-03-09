@@ -16,7 +16,7 @@ describe UserFaqModule::RemoveService do
     it "Without faq_id, receive faq required" do
       remove_service = UserFaqModule::RemoveService.new({'original-username' => @user.username})
       response = remove_service.call
-      expect(response).to match('Informe o id faq')
+      expect(response).to match('Faq não encontrada')
     end
 
     it "Whit invalid username, receive username not found" do
